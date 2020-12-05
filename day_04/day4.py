@@ -1,6 +1,5 @@
 from re import match, split as re_split
 
-
 codes = {
     "byr": lambda x: int(x) in range(1920, 2003),
     "iyr": lambda x: int(x) in range(2010, 2021),
@@ -11,7 +10,7 @@ codes = {
     "hcl": lambda x: match(r"^#[a-f0-9]{6}$", x),
     "ecl": lambda x: x in ("amb", "blu", "brn", "gry", "grn", "hzl", "oth"),
     "pid": lambda x: match(r"^[0-9]{9}$", x),
-    # "cid": lambda x: True,
+    # "cid": lambda x: True
 }
 
 
@@ -36,10 +35,7 @@ def parse_passports(raw_data: list, validation_checks=False):
     return passports
 
 
-def valid_count(passports):
-    return sum(pp["valid"] for pp in passports)
-
-
+valid_count = lambda passports: sum(pp["valid"] for pp in passports)
 parser = lambda x: re_split(r"\n|\s", x)
 
 if __name__ == "__main__":
