@@ -1,4 +1,4 @@
-split_data = lambda x: [[set(list(j)) for j in i.split("\n")] for i in x]
+split_data = lambda x: [[set(j) for j in i.split("\n")] for i in x]
 counter = lambda data, set_fn: sum(len(set_fn(*s)) for s in data)
 
 
